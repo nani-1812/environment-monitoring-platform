@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Login</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+background:white;
+transition:0.4s;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#2f6f4e;
+color:white;
+}
+
+.controls{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.switch{
+position:relative;
+display:inline-block;
+width:50px;
+height:24px;
+}
+
+.switch input{
+opacity:0;
+width:0;
+height:0;
+}
+
+.slider{
+position:absolute;
+cursor:pointer;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:#ccc;
+border-radius:24px;
+}
+
+.slider:before{
+position:absolute;
+content:"";
+height:18px;
+width:18px;
+left:3px;
+bottom:3px;
+background:white;
+border-radius:50%;
+transition:.4s;
+}
+
+input:checked + .slider{
+background:#333;
+}
+
+input:checked + .slider:before{
+transform:translateX(26px);
+}
+
+/* LOGIN BOX */
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:70vh;
+}
+
+.login-box{
+width:350px;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.login-box h2{
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+margin-top:15px;
+padding:10px;
+width:100%;
+border:none;
+border-radius:6px;
+background:#2f6f4e;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.error{
+color:red;
+font-size:14px;
+margin-top:8px;
+}
+
+.register{
+margin-top:15px;
+font-size:14px;
+}
+
+/* DARK MODE */
+
+.dark{
+background:black;
+color:white;
+}
+
+.dark header{
+background:#d4af37;
+color:black;
+}
+
+.dark .login-box{
+background:#1a1a1a;
+color:white;
+}
+
+.dark button{
+background:#d4af37;
+color:black;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h2>Login</h2>
+
+<div class="controls">
+
+<label class="switch">
+<input type="checkbox" onclick="toggleMode()">
+<span class="slider"></span>
+</label>
+
+</div>
+
+</header>
+
+
+<div class="container">
+
+<div class="login-box">
+
+<h2>Enter your phone number</h2>
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<div class="error" id="phoneError"></div>
+
+<div id="otpSection" style="display:none">
+
+<input type="text" id="otp" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify OTP</button>
+
+<div class="error" id="otpError"></div>
+
+</div>
+
+<div class="register">
+
+New user? 
+<a href="register.html">Register</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* DARK MODE */
+
+function toggleMode(){
+document.body.classList.toggle("dark")
+}
+
+/* SEND OTP */
+
+function sendOTP(){
+
+let phone=document.getElementById("phone").value
+let error=document.getElementById("phoneError")
+
+if(phone.length!=10 || isNaN(phone)){
+
+error.innerText="Enter correct 10 digit phone number"
+return
+
+}
+
+error.innerText=""
+
+document.getElementById("otpSection").style.display="block"
+
+alert("OTP sent (Demo)")
+
+}
+
+/* VERIFY OTP */
+
+function verifyOTP(){
+
+let otp=document.getElementById("otp").value
+let error=document.getElementById("otpError")
+
+if(otp.length<4){
+
+error.innerText="Enter valid OTP"
+return
+
+}
+
+error.innerText=""
+
+alert("Login successful")
+
+/* dashboard redirect */
+
+window.location.href="dashboard.html"
+
+}
+
+</script>
+
+</body>
+
+</html>
