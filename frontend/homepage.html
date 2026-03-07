@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Environmental Monitoring Platform</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:white;
+transition:0.4s;
+}
+
+/* HEADER */
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#2f6f4e;
+color:white;
+}
+
+header h1{
+margin:0;
+}
+
+.controls{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+button{
+padding:8px 15px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.login-btn{
+background:white;
+color:#2f6f4e;
+}
+
+.register-btn{
+background:#ffd84d;
+}
+
+.switch{
+position:relative;
+display:inline-block;
+width:50px;
+height:24px;
+}
+
+.switch input{
+opacity:0;
+width:0;
+height:0;
+}
+
+.slider-toggle{
+position:absolute;
+cursor:pointer;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:#ccc;
+transition:.4s;
+border-radius:24px;
+}
+
+.slider-toggle:before{
+position:absolute;
+content:"";
+height:18px;
+width:18px;
+left:3px;
+bottom:3px;
+background:white;
+transition:.4s;
+border-radius:50%;
+}
+
+input:checked + .slider-toggle{
+background:#333;
+}
+
+input:checked + .slider-toggle:before{
+transform:translateX(26px);
+}
+
+/* HERO */
+
+.hero{
+text-align:center;
+padding:40px 20px;
+}
+
+.hero h2{
+margin:10px 0;
+}
+
+/* SECTIONS */
+
+.section{
+padding:40px;
+text-align:center;
+}
+
+/* SLIDER */
+
+.slider-container{
+max-width:900px;
+margin:auto;
+overflow:hidden;
+}
+
+.slider{
+display:flex;
+transition:0.6s;
+}
+
+.card{
+min-width:250px;
+margin:10px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.1);
+}
+
+.card h3{
+color:#2f6f4e;
+}
+
+/* ABOUT */
+
+.about{
+max-width:800px;
+margin:auto;
+line-height:1.6;
+color:#444;
+}
+
+/* DARK MODE */
+
+.dark{
+background:black;
+color:white;
+}
+
+.dark header{
+background:#d4af37;
+color:black;
+}
+
+.dark .card{
+background:#1a1a1a;
+color:white;
+}
+
+.dark .card h3{
+color:#d4af37;
+}
+
+.dark .login-btn{
+background:black;
+color:#d4af37;
+border:1px solid #d4af37;
+}
+
+.dark .register-btn{
+background:#d4af37;
+color:black;
+}
+
+.dark .about{
+color:#ddd;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<header>
+
+<h1>Environmental Monitoring Platform</h1>
+
+<div class="controls">
+
+<button class="login-btn" onclick="location.href='login.html'">
+Login
+</button>
+
+<button class="register-btn" onclick="location.href='register.html'">
+Register
+</button>
+
+<label class="switch">
+<input type="checkbox" onclick="toggleMode()">
+<span class="slider-toggle"></span>
+</label>
+
+</div>
+
+</header>
+
+
+<div class="hero">
+
+<h2>Real-time monitoring of air, noise and water pollution</h2>
+
+</div>
+
+
+<div class="section">
+
+<h2>Current Environmental Status</h2>
+
+<div class="slider-container">
+
+<div class="slider" id="citySlider">
+
+<div class="card">
+<h3>Delhi</h3>
+<p>PM2.5 : 85</p>
+<p>Noise : 70 dB</p>
+<p>Water pH : 6.8</p>
+</div>
+
+<div class="card">
+<h3>Mumbai</h3>
+<p>PM2.5 : 60</p>
+<p>Noise : 65 dB</p>
+<p>Water pH : 7.2</p>
+</div>
+
+<div class="card">
+<h3>Hyderabad</h3>
+<p>PM2.5 : 45</p>
+<p>Noise : 55 dB</p>
+<p>Water pH : 7.0</p>
+</div>
+
+<div class="card">
+<h3>Bangalore</h3>
+<p>PM2.5 : 50</p>
+<p>Noise : 58 dB</p>
+<p>Water pH : 7.1</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>About Our Platform</h2>
+
+<p class="about">
+
+This platform provides real-time environmental monitoring
+for air quality, noise pollution and water quality.
+The system analyzes environmental data and generates alerts
+whenever pollution levels exceed safe limits. The platform
+helps authorities monitor environmental conditions and
+respond quickly to pollution incidents.
+
+</p>
+
+</div>
+
+
+<script>
+
+/* DARK MODE */
+
+function toggleMode(){
+document.body.classList.toggle("dark")
+}
+
+/* CITY SLIDER */
+
+let slider=document.getElementById("citySlider")
+let scrollAmount=0
+
+function slideCities(){
+
+scrollAmount+=260
+
+if(scrollAmount>780){
+scrollAmount=0
+}
+
+slider.style.transform="translateX(-"+scrollAmount+"px)"
+
+}
+
+setInterval(slideCities,3000)
+
+</script>
+
+
+</body>
+
+</html>
