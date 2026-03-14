@@ -1,0 +1,5 @@
+{
+  "name": "PRITHVINET",
+  "description": "Environmental Monitoring & Inspection System for government pollution control boards.",
+  "requestFramePermissions": ["geolocation"]
+}
